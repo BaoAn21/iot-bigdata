@@ -1,0 +1,5 @@
+Faker==23.2.1
+kafka-python==2.0.2
+python-dateutil==2.8.2
+six==1.16.0
+pyspark==3.5.1
