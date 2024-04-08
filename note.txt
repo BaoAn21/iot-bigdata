@@ -6,7 +6,7 @@ python producer.py
 
 /Users/tranan/Desktop/dev/spark/spark-3.5.1-bin-hadoop3/bin/spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1 \
   --master local\[4\] \
-  SimpleApp.py
+  Streaming.py
 
 kafka-topics --bootstrap-server localhost:9092 --delete --topic electricity-usage
 
