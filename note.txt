@@ -9,3 +9,9 @@ python producer.py
   SimpleApp.py
 
 kafka-topics --bootstrap-server localhost:9092 --delete --topic electricity-usage
+
+admin-pass mongo-express
+
+python meter-producer.py 
+python spark-mongo.py 
+python data-mongo.py
