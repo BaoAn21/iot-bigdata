@@ -1,7 +1,9 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, when, avg, current_date
+from pyspark.sql.functions import col, when, avg, current_date, to_date,lit
+import datetime
+from datetime import date
 
-appName = "PySpark MongoDB Examples"
+appName = "iot-batch"
 master = "spark://Trans-MacBook-Pro.local:7077"
 # Create Spark session
 spark = SparkSession.builder \
@@ -19,12 +21,17 @@ df.show()
 df = df.withColumn("meter_type", when(col("usage_kwh").isNotNull(), "electricity") \
                    .otherwise("water"))
 
-# Calculate average usage per meter type
-# Calculate average usage per meter type and add current date
-df_averages = df.groupBy("meter_type").agg(
+# Filter for the current date
+today = datetime.date.today()
+# today = date(2024, 4, 17)
+df_filtered = df.filter(to_date("timestamp") == today)
+
+# Calculate average usage per meter type for the current date
+df_averages = df_filtered.groupBy("meter_type").agg(
     avg(col("usage").cast("double")).alias("avg_usage"),
     avg(col("usage_kwh").cast("double")).alias("avg_usage_kwh"),
     current_date().alias("calculation_date")
+    # lit(today).cast("date").alias("calculation_date") 
 )
 
 # Save the result DataFrame back to MongoDB 

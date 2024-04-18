@@ -1,4 +1,4 @@
-version: "3.8"
+version: '2.1'
 
 services:
   zoo1:
@@ -36,42 +36,6 @@ services:
       KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
     depends_on:
       - zoo1
-  mongo:
-    image: mongo:latest
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=password
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
 
-  mongo-express:
-    image: mongo-express:latest
-    environment:
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
-      - ME_CONFIG_MONGODB_SERVER=mongo
-    ports:
-      - "8081:8081"
-    depends_on:
-      - mongo
-  metabase:
-    image: metabase/metabase:latest
-    ports:
-      - "3000:3000"
-    depends_on:
-      - mongo
-    environment:
-      - MB_DB_TYPE=mongo
-      - MB_DB_DBNAME=mydatabase  # Replace with your database name
-      - MB_DB_HOST=mongo
-      - MB_DB_PORT=27017
-      - MB_DB_USER=admin
-      - MB_DB_PASS=password
-    volumes:
-      - metabase-data:/metabase-data
 
-volumes:
-  mongo-data: {}
-  metabase-data: {}
+

@@ -23,17 +23,29 @@ python data-mongo.py
 
 /Users/tranan/Desktop/dev/spark/spark-3.5.1-bin-hadoop3/bin/spark-submit --packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.2 Batch.py 
 
-mongodb://admin:password@localhost:27017/iot?retryWrites=true&authSource=admin&readPreference=nearest
+mongodb://admin:password@192.168.1.74:27017/iot?retryWrites=true&authSource=admin&readPreference=nearest
 mongodb://root:Password123@mongodb:27017/test?retryWrites=true&w=majority&authSource=admin&readPreference=nearest
 
 airflow standalone
 DAG locate in /Users/tranan/airflow
 
 Running
-1. meter-producer.py 
-2. spark-mongo.py 
-3. data-mongo.py
+1. ETL meter-producer.py 
+2. ETL spark-mongo.py 
+3. ETL data-mongo.py
 4. /Users/tranan/Desktop/dev/spark/spark-3.5.1-bin-hadoop3/bin/spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1 \
   --master local\[4\] \
   Streaming.py
-5. 
+5. airflow standalone
+(spark)
+spark sbin ./stop-master.sh
+            ./stop-worker.sh
+            .start-master.sh
+            .start-worker.sh (link in start-master)
+
+airflow admin-admin
+mongoexpress admin-pass
+metabase 1234An
+
+start metabase in seperate docker
+
