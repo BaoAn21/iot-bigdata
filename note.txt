@@ -46,6 +46,6 @@ spark sbin ./stop-master.sh
 airflow admin-admin
 mongoexpress admin-pass
 metabase 1234An
-
+spark localhost:8080
 start metabase in seperate docker
 
