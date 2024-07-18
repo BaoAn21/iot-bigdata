@@ -6,12 +6,12 @@ import json
 
 # MongoDB Configuration
 client = MongoClient("mongodb://admin:password@localhost:27017")  # Adjust if your MongoDB runs differently
-db = client['iot']  # Replace 'mydatabase' with your database name
+db = client['iot'] 
 collection = db['iot-abnormal']
 
 # Kafka Configuration
 bootstrap_servers = ['localhost:9092']
-topic_name = 'iot-abnormal'  # Replace with your actual topic name
+topic_name = 'iot-abnormal' 
 
 # Create a Kafka Consumer
 consumer = KafkaConsumer(topic_name, bootstrap_servers=bootstrap_servers)

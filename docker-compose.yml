@@ -60,15 +60,6 @@ services:
     image: metabase/metabase:latest
     ports:
       - "3000:3000"
-    depends_on:
-      - mongo
-    environment:
-      - MB_DB_TYPE=mongo
-      - MB_DB_DBNAME=mydatabase  # Replace with your database name
-      - MB_DB_HOST=mongo
-      - MB_DB_PORT=27017
-      - MB_DB_USER=admin
-      - MB_DB_PASS=password
     volumes:
       - metabase-data:/metabase-data
 

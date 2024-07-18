@@ -36,11 +36,12 @@ Running
 4. /Users/tranan/Desktop/dev/spark/spark-3.5.1-bin-hadoop3/bin/spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1 \
   --master local\[4\] \
   Streaming.py
-5. airflow standalone
+5. airflow standalone  (8101 config port )
+
 (spark)
 spark sbin ./stop-master.sh
             ./stop-worker.sh
-            .start-master.sh
+            .start-master.sh   (8080)
             .start-worker.sh (link in start-master)
 
 airflow admin-admin

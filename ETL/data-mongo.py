@@ -20,4 +20,4 @@ consumer = KafkaConsumer(topic_name, bootstrap_servers=bootstrap_servers)
 for message in consumer:
     data = json.loads(message.value.decode('utf-8'))
     print(data)
-    collection.insert_one(data)
+    collection.insert_one(data) 
